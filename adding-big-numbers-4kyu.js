@@ -15,8 +15,11 @@ The input is a string of only digits
 The numbers are positives
 */
 
-function add(a, b) {
-  return (Number(a) + Number(b)).toString(); // Fix me!
+const add = (a, b) => {
+  const aBigInt = BigInt(a);
+  const bBigInt = BigInt(b);
+  const totalBigInt = aBigInt + bBigInt;
+  return totalBigInt.toString();
 }
 
 const result1 = add('63829983432984289347293874', '90938498237058927340892374089');

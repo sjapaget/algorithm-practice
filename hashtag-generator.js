@@ -21,18 +21,36 @@ Examples
 
 
 const generateHashtag = str => {
+  const words = str.split(" ").filter(word => {
+    const regex = /\S/
+    return regex.test(word);
+  })
 
+  const upperCasedWords = words.map(word => {
+    return word[0].toUpperCase() + word.slice(1)
+  })
+
+  const result = "#" + upperCasedWords.join("")
+  console.log(result)
+  if (result.length > 140 || result.length < 2) {
+    return false
+  }
+  return result;
 };
 
-const result1 = generateHashtag("");
+const result1 = generateHashtag("     ");
 const test1 = result1 === false
 
-const result2 = generateHashtag("Do We have A Hashtag");
+const result2 = generateHashtag("do we have a hashtag");
 const test2 = result2 === "#DoWeHaveAHashtag"
+
+const result3 = generateHashtag("codewars");
+const test3 = result3 === "#Codewars"
 
 console.table(
   {
     test1: test1,
-    test2: test2
+    test2: test2,
+    test3: test3
   }
 )

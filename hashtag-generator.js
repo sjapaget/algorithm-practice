@@ -20,5 +20,19 @@ Examples
 */
 
 
-function generateHashtag (str) {
-}
+const generateHashtag = str => {
+
+};
+
+const result1 = generateHashtag("");
+const test1 = result1 === false
+
+const result2 = generateHashtag("Do We have A Hashtag");
+const test2 = result2 === "#DoWeHaveAHashtag"
+
+console.table(
+  {
+    test1: test1,
+    test2: test2
+  }
+)

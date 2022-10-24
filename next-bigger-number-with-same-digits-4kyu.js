@@ -22,7 +22,14 @@ nextBigger(num: 531) // returns nil
 */
 
 const nextBigger = num => {
+  //split num into an array
 
+  //iterate over the num array backwards
+
+  //check if the current element is bigger than the next element along
+    // if it is bigger => swap it's position with that of the one next to it & stop the loop
+
+  // reconstruct an integer to return
 }
 
 result1 = nextBigger(12);

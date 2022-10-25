@@ -22,14 +22,31 @@ nextBigger(num: 531) // returns nil
 */
 
 const nextBigger = num => {
-  //split num into an array
+  //split num into an array of strings
+  const numArr = num.toString().split("");
 
-  //iterate over the num array backwards
+  // locate the point where a swap needs to happen (where the lower unit has a bigger absolute value than the higher unit)
+  const potentialSwaps = [];
+  numArr.forEach((item, index) => {
+    //check if the current element is bigger than the next element along
+    if (item < numArr[index + 1]) {
+      potentialSwaps.push([index, index + 1]);
+    }
+  })
 
-  //check if the current element is bigger than the next element along
-    // if it is bigger => swap it's position with that of the one next to it & stop the loop
+  const smallestValueSwapIndexes = potentialSwaps[potentialSwaps.length - 1];
+
+  // make the swap in a copy of the array
+  const resultArr = [...numArr]
+
+  const valueA = numArr[smallestValueSwapIndexes[0]]
+  const valueB = numArr[smallestValueSwapIndexes[1]]
+
+  resultArr[smallestValueSwapIndexes[0]] = valueB
+  resultArr[smallestValueSwapIndexes[1]] = valueA
 
   // reconstruct an integer to return
+  return parseInt(resultArr.join(""))
 }
 
 result1 = nextBigger(12);
@@ -40,3 +57,11 @@ test2 = result2 === 531
 
 result3 = nextBigger(2017)
 test3 = result3 === 2071
+
+console.table(
+  {
+    test1: test1,
+    test2: test2,
+    test3: test3
+  }
+)
